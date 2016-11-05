@@ -1,0 +1,47 @@
+
+// Bootstrap Variables
+$icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
+
+// Import Bootstrap
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+.container{
+  .recipe-pane{
+    box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.75);
+    .recipe-header{
+      border: 1px dotted grey;
+      padding-top: 10px;
+      .servings-box{
+        display: inline-flex;
+        border: 1px solid grey;
+        width: 40px;
+      }
+      .header-span{
+        font-style: italic;
+      }
+      input{
+        width: 40px;
+      }
+      button{
+        float: right;
+      }
+      .recipe-message{
+        border: 1px dotted grey;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 10px;
+      }
+    }
+  }
+}
