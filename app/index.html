@@ -10,6 +10,21 @@
 
 
 <div id="app"></div>
+<form class="form-inline">
+  <div class="form-group">
+    <label htmlFor="servings">Servings</label>
+    <input type="text" class="form-control" id="original-servings" placeholder="original servings">
+    <label htmlFor="measurement-us" className="radio-stack">
+              <input defaultChecked id="measurement-us" type="radio" name="measurements" value="imperial" />
+              <span>US</span>
+            </label>
+            <label htmlFor="measurement-metric" className="radio-stack">
+              <input disabled id="measurement-metric" type="radio" name="measurements" value="metric" />
+              <span>Metric</span>
+            </label>
+  </div>
+  <button type="submit" class="btn btn-default">Adjust Recipe</button>
+</form>
 <!-- <div className="container">
   <div className="row">
     <div className="col-md-8 recipe-pane">

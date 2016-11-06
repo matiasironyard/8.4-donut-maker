@@ -2,6 +2,7 @@ var Backbone = require('backbone');
 
 var Recipe = Backbone.Model.extend({
   idAttribute: 'objectId',
+  //set up recipe: defaults and methods to update servings/ingredient amount.
 
 });
 

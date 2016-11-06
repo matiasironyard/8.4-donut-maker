@@ -2,7 +2,7 @@ var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var AdjustRecipe = require('./components/AdjustRecipe.jsx').AdjustRecipe;
+var AdjustRecipeContainer = require('./components/AdjustRecipe.jsx').AdjustRecipeContainer;
 
 var AppRouter = Backbone.Router.extend({
   routes: {
@@ -14,7 +14,7 @@ var AppRouter = Backbone.Router.extend({
 
   index: function(){
     ReactDOM.render(
-      React.createElement(AdjustRecipe),
+      React.createElement(AdjustRecipeContainer),
       //testing AdjustRecipe here. will move it to editRecipe.
       document.getElementById('app')
     );

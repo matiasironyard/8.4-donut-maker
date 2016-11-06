@@ -1,59 +1,62 @@
 var React = require('react');
 
 var recipes = require('../models/recipes');
+var TemplateComponent = ('./templates.jsx').TemplateComponent;
 
-
-var AdjustRecipe = React.createClass({
-  getInitialState: function(){
-    var recipeCollection = new recipes.RecipesCollection();
-    console.log(recipeCollection);
-    recipeCollection.add([
-      {
-        "title": "test-recipe",
-        "servings": "10",
-        "items": [
-          {"amount": 3, "unit": "pounds", "ingredient": "avocado"},
-          {"amount": 4, "unit": "whole", "ingredient": "eggs"},
-          {"amount": 2, "unit": "table spoons", "ingredient": "salt"},
-          {"amount": 1, "unit": "oz", "ingredient": "milk"},
-        ]
-      }
-    ]);
-    return {
-      recipeCollection: recipeCollection
-    }
-  },
-
-
+var AdjustFormComponent = React.createClass({
+  //pass in recipe
   render: function(){
-    var self = this;
-    var personalRecipe = self.state.recipeCollection.pop().toJSON();
-    var servings = personalRecipe.servings;
-    var Ingredients = personalRecipe['items'].map(function(item){
-      var amount = item.amount;
-      var unit = item.unit;
-      var ingredient = item.ingredient;
-
-      return(
-        <li key={item.cid}><input type="checkbox"/><span>{amount}</span><span> {unit}</span><span> {ingredient}</span></li>
-        );
-    });
-    return(
-      <div>
+    return (
+      <div className="adjust-view">
         <form className="form-inline">
           <div className="form-group">
-            <label className="header-span" htmlFor="exampleInputName2">Makes</label>
-            <input onChange={this.handleMod} value={this.servings} type="text" className="form-control" id="servings" placeholder="#"></input>
-            <span className="header-span">Servings</span>
+            <label htmlFor="servings">Servings</label>
+            <input type="text" className="form-control" id="original-servings" placeholder="original servings"/>
+            <label htmlFor="measurement-us" className="radio-stack">
+              <input defaultChecked id="measurement-us" type="radio" name="measurements" value="imperial" />
+              <span>US</span>
+            </label>
+            <label htmlFor="measurement-metric" className="radio-stack">
+                <input disabled id="measurement-metric" type="radio" name="measurements" value="metric" />
+                <span>Metric</span>
+            </label>
           </div>
-          <button type="submit" className="btn btn-default">Adjust</button>
+          <button type="submit" className="btn btn-default">Adjust Recipe</button>
         </form>
-        {Ingredients}
       </div>
     );
   }
 });
 
+var IngredientsComponent = React.createClass({
+  render: function(){
+    //get and map ingredients her.
+    return (
+      <div className="ingredients-view">
+        <ul className="ingredients-ul">
+          <li className="ingredients-li">
+            <input type="checkbox">
+              //pass ingredients here
+            </input>
+          </li>
+        </ul>
+      </div>
+    );
+  }
+});
+
+var AdjustRecipeContainer = React.createClass({
+  render: function(){
+    return (
+        <TemplateComponent>
+          <div className="col-md-6">
+            <AdjustFormComponent/>
+            <IngredientsComponent/>
+          </div>
+        </TemplateComponent>
+    );
+  }
+});
 module.exports = {
-  AdjustRecipe: AdjustRecipe
+  AdjustRecipeContainer: AdjustRecipeContainer
 };
