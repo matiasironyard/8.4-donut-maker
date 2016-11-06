@@ -10,7 +10,9 @@ var TemplateComponent = React.createClass ({
             <ul className="nav nav-tabs">
               <li><span className="nav-name">NAME</span><span className="nav-message"> ,welcome!</span></li>
               <li role="presentation" className="active"><a onClick={this.props.RecipiesHome} href="">Recipes Home</a></li>
-              <li role="presentation"><a onClick={this.props.addRecipe}href="#/cart/">Add Recipe</a></li>
+              <li role="presentation"><a onClick={this.props.addRecipe}href="#/add-recipe/">Add Recipe</a></li>
+              <li role="presentation"><a onClick={this.props.addRecipe}href="#/view-recipes/">View Recipes</a></li>
+              <li role="presentation"><a onClick={this.props.addRecipe}href="#/edit-recipe/">Edit Recipe</a></li>
             </ul>
           </div>
         </div>
