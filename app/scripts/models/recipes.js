@@ -4,11 +4,11 @@ var Recipe = Backbone.Model.extend({
 
 });
 
-var RecipiesCollection = Backbone.Collection.extend({
+var RecipesCollection = Backbone.Collection.extend({
   model: Recipe
 });
 
 module.exports = {
   Recipe: Recipe,
-  RecipiesCollection: RecipiesCollection,
+  RecipesCollection: RecipesCollection,
 };

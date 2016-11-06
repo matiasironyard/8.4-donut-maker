@@ -2,7 +2,7 @@ var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var modRecipeContainer = require('./components/calculate_recipe.jsx').modRecipeContainer;
+var AdjustRecipe = require('./components/AdjustRecipe.jsx').AdjustRecipe;
 
 var AppRouter = Backbone.Router.extend({
   routes: {
@@ -10,7 +10,7 @@ var AppRouter = Backbone.Router.extend({
   },
   index: function(){
     ReactDOM.render(
-      React.createElement(modRecipeContainer),
+      React.createElement(AdjustRecipe),
       document.getElementById('app')
     );
   }
