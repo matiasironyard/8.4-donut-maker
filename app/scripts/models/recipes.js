@@ -18,7 +18,7 @@ var Recipe = Backbone.Model.extend({
   },
 
  updateQtys: function(){
-   //
+   //Need to take ConversionFactor and map over ingredients to update amounts...
  },
 
 
