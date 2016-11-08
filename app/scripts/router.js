@@ -2,44 +2,45 @@ var Backbone = require('backbone');
 var React = require('react');
 var ReactDOM = require('react-dom');
 
+//bring in components
 var AdjustRecipeContainer = require('./components/AdjustRecipe.jsx').AdjustRecipeContainer;
 
 var AppRouter = Backbone.Router.extend({
   routes: {
     '': 'index',
-    'add-recipe/': 'addRecipe',
-    'view-recipes/': 'viewRecipes',
-    'edit-recipe': 'editRecipe',
+    'recipes/' : 'allRecipes',
+    'recipes/:id/' : 'singleRecipeView',
+    'recipes/:id/edit': 'editRecipe',
+    'recipes/add': 'editRecipe',
   },
 
   index: function(){
     ReactDOM.render(
-      React.createElement(AdjustRecipeContainer),
-      //testing AdjustRecipe here. will move it to editRecipe.
+      React.createElement(LogInContainer),
       document.getElementById('app')
     );
   },
 
-//   editRecipe: function(){
-//     ReactDOM.render(
-//       React.createElement(AdjustRecipe),
-//       document.getElementById('app')
-//     );
-//   },
-//
-//   addRecipe: function(){
-//     ReactDOM.render(
-//       React.createElement(AddRecipe),
-//       document.getElementById('app')
-//     );
-//   },
-//
-//   viewRecipes: function(){
-//     ReactDOM.render(
-//       React.createElement(ViewRecipes),
-//       document.getElementById('app')
-//     );
-//   },
+  recipeAddEdit: function(){
+    ReactDOM.render(
+      React.createElement(???, {recipeId: recipeId}),
+      document.getElementById('app')
+    );
+  },
+
+  singleRecipeView: function(){
+    ReactDOM.render(
+      React.createElement(???, {recipeId: recipeId}),
+      document.getElementById('app')
+    );
+  },
+
+  allRecipes: function(){
+    ReactDOM.render(
+      React.createElement(???, {recipeId: recipeId} ),
+      document.getElementById('app')
+    );
+  },
 });
 
 var router = new AppRouter();
