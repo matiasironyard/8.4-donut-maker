@@ -13,7 +13,7 @@ var UserModel = Backbone.Model.extend({
       beforeSetup: function(xhr){
         xhr.setRequestHeader('X-Parse-Application-Id', 'matiasrecipeserver'),
         xhr.setRequestHeader('X-Parse-Sessinon-Token', response.sessionToken),
-        xhr.setRequestHeader('X-Parse-REST-API-Key', 'recipe'),
+        // xhr.setRequestHeader('X-Parse-REST-API-Key', 'recipe'),
       }
     });
   },

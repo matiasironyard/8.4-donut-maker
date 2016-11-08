@@ -4,9 +4,10 @@ var Recipe = Backbone.Model.extend({
   idAttribute: 'objectId',
   //set up recipe: defaults and methods to update servings/ingredient amount.
   defaults: {
-    title: "Your Recipe Title",
+    objectId: '',
+    name: "Your Recipe Title",
     qty: 1,
-    qtyMeasurement: 'imperial',
+    unit: 'imperial',
     ingredients: []
   },
   ConversionFactor: function(newQty){
@@ -26,7 +27,7 @@ var Recipe = Backbone.Model.extend({
 
 var RecipesCollection = Backbone.Collection.extend({
   model: Recipe,
-  url: 'https://matias-recipe.herokuapp.com/Classes/Recipes',
+  // url: 'https://matias-recipe.herokuapp.com/Classes/Recipe',
 });
 
 module.exports = {

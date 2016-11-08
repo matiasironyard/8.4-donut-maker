@@ -8,53 +8,35 @@
   </head>
   <body>
 
-
-<div id="app"></div>
-<form class="form-inline">
-  <div class="form-group">
-    <label htmlFor="servings">Servings</label>
-    <input type="text" class="form-control" id="original-servings" placeholder="original servings">
-    <label htmlFor="measurement-us" className="radio-stack">
-              <input defaultChecked id="measurement-us" type="radio" name="measurements" value="imperial" />
-              <span>US</span>
-            </label>
-            <label htmlFor="measurement-metric" className="radio-stack">
-              <input disabled id="measurement-metric" type="radio" name="measurements" value="metric" />
-              <span>Metric</span>
-            </label>
-  </div>
-  <button type="submit" class="btn btn-default">Adjust Recipe</button>
-</form>
-<!-- <div className="container">
-  <div className="row">
-    <div className="col-md-8 recipe-pane">
-      <div className="row">
-        <div className="col-md-12 recipe-header">
-          <div className="col-md-10 recipe-servings">
-            <form className="form-inline">
-              <div className="form-group">
-                <label className="header-span" for="exampleInputName2">Makes</label>
-                <input type="text" className="form-control" id="servings" placeholder="#"/>
-                <span className="header-span">Servings</span>
-              </div>
-              <button type="submit" className="btn btn-default">Send invitation</button>
-            </form>
-          </div>
-          <div className="col-md-10 recipe-message">
-            <span className="recipe-message-span">Ingredients list now reflects the new serving size.</span>
+    <div class="container-fluid">
+      <div class="menu row">
+        <div class="col-md-11 nav-bar-col">
+          <a href="#"><div class="facebook"></div></a>
+            <ul class="nav nav-tabs">
+              <li><span class="nav-name">#,</span><span class="nav-message"> Welcome!</span></li>
+              <li role="presentation" class="active"><a onClick={this.props.RecipiesHome} href="">Recipes Home</a></li>
+              <li role="presentation"><a onClick={this.props.addRecipe}href="#/add-recipe/">Add Recipe</a></li>
+              <li role="presentation"><a onClick={this.props.addRecipe}href="#/view-recipes/">View Recipes</a></li>
+              <li role="presentation"><a onClick={this.props.addRecipe}href="#/edit-recipe/">Edit Recipe</a></li>
+            </ul>
+        </div>
+        <div class="col-md-12 header-col">
+          <div class="header-title">
+            <h1 class="restaurant-name">Two Cups of Flour Backery</h1>
+            <h3 class="subtitle">Create and Share Tasty Recipes</h3>
           </div>
         </div>
-        <div className="col-md-12 ingredient-pane">
-          <div className="col-md-12">
-            <ul className="ingredients-ul">
-              {ingredients}
-            </ul>
-          </div>
+        <div class="components">
+      <div id="app"></div>
         </div>
       </div>
+      <div className="col-md-12-fluid footer">
+        <span className="footer-title">Two Cups Of Flour Bakery</span> <p>Copyright © Two Cups Of Flour Backery 2016</p>
+      </div>
     </div>
-  </div>
-</div> -->
+
+
+
 
     <script src="js/bundle.js"></script>
   </body>
