@@ -12,14 +12,14 @@ var AddEditRecipeContainer = require('./components/recipeForm.jsx').AddEditRecip
 var AppRouter = Backbone.Router.extend({
   routes: {
     '': 'index',
-    'recipes/add/': 'editRecipe',
-    'recipes/:id/edit/': 'editRecipe',
+    'recipes/add/': 'editAddRecipe',
+    'recipes/:id/edit/': 'editAddRecipe',
     'recipes/:id/' : 'singleRecipeView',
     'recipes/' : 'allRecipes',
   },
 
   initialize: function(){
-    setupParse('matiasrecipeserver', 'recipe')
+    setupParse('matiasrecipeserver', 'recipe');
   },
 
   index: function(){
@@ -29,7 +29,7 @@ var AppRouter = Backbone.Router.extend({
     );
   },
 
-  editRecipe: function(recipeId){
+  editAddRecipe: function(recipeId){
     ReactDOM.render(
       React.createElement(AddEditRecipeContainer, {recipeId: recipeId}),
       document.getElementById('app')
@@ -54,4 +54,4 @@ var AppRouter = Backbone.Router.extend({
 
 var router = new AppRouter();
 
-module.export = router;
+module.exports = router;

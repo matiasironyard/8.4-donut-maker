@@ -13,7 +13,8 @@ var FormIngredientsList = React.createClass({
     this.setState(newProps.ingredient.toJSON());
   },
   handleInputChange: function(e){
-    var targe = e.target;
+    var target = e.target;
+    // console.log(target);
     var newState = {};
     newState[target.name] = target.value;
     this.props.ingredient.set(target.name, target.value);
@@ -46,7 +47,7 @@ var FormIngredientsList = React.createClass({
 
 var Form = React.createClass ({
   getInitialState: function(){
-    return this.props.ingredient.toJSON();
+    return this.props.recipe.toJSON();
   },
 
 componentWillReceiveProps: function(newProps){
@@ -132,12 +133,14 @@ var AddEditRecipeContainer = React.createClass({
   addIngredient: function(){
     var recipe = this.state.recipe;
     var ingredients = recipe.get('ingredients');
+    console.log(ingredients);
     ingredients.add([{}]);
     this.setState({recipe: recipe})
   },
 
   saveRecipe: function(recipeData){
     var recipe = this.state.recipe;
+    console.log(recipe);
     recipe.set(recipeData);
     recipe.save().then(()=>{
       Backbone.history.navigate('recipes/' + recipe.get('objectId') + '/', {trigger: true});
@@ -147,7 +150,8 @@ var AddEditRecipeContainer = React.createClass({
   render: function(){
     return (
       <div>
-        <form recipe={this.state.recipe} saveRecipe={this.saveRecipe} addIngredient={this.addIngredient}/>
+        <h1>Test</h1>
+        <Form recipe={this.state.recipe} saveRecipe={this.saveRecipe} addIngredient={this.addIngredient}/>
       </div>
     )
   }

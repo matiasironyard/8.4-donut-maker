@@ -8,8 +8,7 @@ var models = require('../models/recipe');
 
 var ParseModel = Backbone.Model.extend({
   idAttribute: 'objectId',
-  save: function (key, val, options){
-    //delete the following so that we don't get a mismatch error when posting.
+  save: function(key, val, options){    //delete the following so that we don't get a mismatch error when posting.
     delete this.attributes.createdAt;
     delete this.attributes.updatedAt;
     //return the model back to its original state since we have overloaded per above.
@@ -52,6 +51,7 @@ var ParseCollection = Backbone.Collection.extend({
 var Ingredient = ParseModel.extend ({
   defaults: {
     name: '',
+    method: '',
     amount: 0,
     units: '',
   },
@@ -95,7 +95,7 @@ module.exports = {
   Recipe: Recipe,
   RecipeCollection: RecipeCollection,
   Ingredient: Ingredient,
-  // IngredientCollection: IngredientCollection
+  IngredientCollection: IngredientCollection
 };
 
 // OLD SETUP   FOR WHEN I WANTED TO DO TO TABLES IN THE SERVER
