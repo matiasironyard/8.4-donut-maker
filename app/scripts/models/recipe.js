@@ -94,7 +94,7 @@ module.exports = {
   Recipe: Recipe,
   RecipeCollection: RecipeCollection,
   Ingredient: Ingredient,
-  IngredientCollection: IngredientCollection
+  // IngredientCollection: IngredientCollection
 };
 
 // OLD SETUP   FOR WHEN I WANTED TO DO TO TABLES IN THE SERVER

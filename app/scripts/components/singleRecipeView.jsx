@@ -36,7 +36,10 @@ var SingleRecipeContainer = React.createClass({
   },
   render: function(){
     return(
-      <AdjustRecipeContainer recipe={this.state.recipe}/>
+      <div>
+        <RecipeHeader recipe={this.state.recipe}/>
+        <AdjustRecipeContainer recipe={this.state.recipe}/>
+      </div>
     );
   }
 });

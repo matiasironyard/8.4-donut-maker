@@ -4,6 +4,7 @@ var models = require('../models/recipe');
 var ItemListing = React.createClass({
   render: function(){
     var recipe = this.props.recipe;
+    console.log(recipe);
     return (
       <a href={'#recipes/' + recipe.get('objectId') + '/'} className="list-group-item">{recipe.get('name')}</a>
     )
@@ -23,7 +24,7 @@ var Listing = React.createClass({
 })
 
 
-console.log(models);
+
 var AllRecipesContainer= React.createClass({
   getInitialState: function(){
     return {
@@ -36,6 +37,7 @@ var AllRecipesContainer= React.createClass({
     recipeCollection.fetch().then(() => {
       this.setState({recipeCollection: recipeCollection});
     });
+    console.log('recipe collection', recipeCollection);
   },
 
   render: function(){
