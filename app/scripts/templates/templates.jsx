@@ -5,30 +5,30 @@ var React = require('react');
 */
 function Template(props){
     return (
-      <div className="container-fluid">
-        <div className="menu row">
-          <div className="col-md-11 nav-bar-col">
-            <a href="#"><div className="facebook"></div></a>
-              <ul className="nav nav-tabs">
-                <li><span className="nav-name">NAME</span><span className="nav-message"> ,welcome!</span></li>
-                <li role="presentation" className="active"><a onClick={this.props.RecipiesHome} href="">Recipes Home</a></li>
+      <div class="container-fluid">
+        <div class="menu row">
+          <div class="col-md-11 nav-bar-col">
+            <a href="#"><div class="facebook"></div></a>
+              <ul class="nav nav-tabs">
+                <li><span class="nav-name">#,</span><span class="nav-message"> Welcome!</span></li>
+                <li role="presentation" class="active"><a onClick={this.props.RecipiesHome} href="">Recipes Home</a></li>
                 <li role="presentation"><a onClick={this.props.addRecipe}href="#/add-recipe/">Add Recipe</a></li>
                 <li role="presentation"><a onClick={this.props.addRecipe}href="#/view-recipes/">View Recipes</a></li>
                 <li role="presentation"><a onClick={this.props.addRecipe}href="#/edit-recipe/">Edit Recipe</a></li>
               </ul>
           </div>
-          <div className="col-md-12 header-col">
-            <div className="header-title">
-              <h1 className="restaurant-name">Baker's Shop</h1>
-              <h3 className="subtitle">Tasty Recipes</h3>
+          <div class="col-md-12 header-col">
+            <div class="header-title">
+              <h1 class="restaurant-name">Two Cups of Flour Backery</h1>
+              <h3 class="subtitle">Create and Share Tasty Recipes</h3>
             </div>
           </div>
-          <div className="components">
-          {this.props.children}
+          <div class="components">
+      
           </div>
         </div>
         <div className="col-md-12-fluid footer">
-          <span className="footer-title">Two Cups Of Flour</span> <p>Copyright © Two Cups Of Flour 2016</p>
+          <span className="footer-title">Two Cups Of Flour Bakery</span> <p>Copyright © Two Cups Of Flour Backery 2016</p>
         </div>
       </div>
     );
