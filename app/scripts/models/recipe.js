@@ -1,5 +1,6 @@
 var Backbone = require('backbone');
 
+var models = require('../models/recipe');
 //setup Parse models
 /**
 *Parse Model and Collection

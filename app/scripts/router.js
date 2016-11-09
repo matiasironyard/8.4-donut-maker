@@ -7,7 +7,7 @@ var setupParse= require('./parseUtilities').setupParse;
 var AdjustRecipeContainer = require('./components/AdjustRecipe.jsx').AdjustRecipeContainer;
 var AllRecipesContainer = require('./components/allRecipes.jsx').AllRecipesContainer;
 var SingleRecipeContainer = require('./components/singleRecipeView.jsx').SingleRecipeContainer;
-// var AddEditRecipeContainer = require('./components/recipeForm.jsx').AddEditRecipeContainer;
+var AddEditRecipeContainer = require('./components/recipeForm.jsx').AddEditRecipeContainer;
 
 var AppRouter = Backbone.Router.extend({
   routes: {
@@ -29,12 +29,12 @@ var AppRouter = Backbone.Router.extend({
     );
   },
 
-  // editRecipe: function(recipeId){
-  //   ReactDOM.render(
-  //     React.createElement(AddEditRecipeContainer, {recipeId: recipeId}),
-  //     document.getElementById('app')
-  //   );
-  // },
+  editRecipe: function(recipeId){
+    ReactDOM.render(
+      React.createElement(AddEditRecipeContainer, {recipeId: recipeId}),
+      document.getElementById('app')
+    );
+  },
 
 
   singleRecipeView: function(recipeId){

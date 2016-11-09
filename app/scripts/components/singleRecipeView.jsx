@@ -24,7 +24,7 @@ var SingleRecipeContainer = React.createClass({
 
   componentWillMount: function(){
     var recipe = this.state.recipe;
-    var recipeId = this.props.recipeId;
+    var recipeId = this.props.recipeId
     if(!recipeId){
       return;
     }
@@ -32,6 +32,7 @@ var SingleRecipeContainer = React.createClass({
     recipe.set('objectId', recipeId);
     recipe.fetch().then(()=> {
       this.setState({recipe: recipe});
+
     });
   },
   render: function(){

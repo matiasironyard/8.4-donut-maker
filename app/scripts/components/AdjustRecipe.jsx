@@ -43,8 +43,8 @@ handleSubmit: function(e){
 var IngredientsList = React.createClass({
   render: function(){
     var factor = this.props.factor;
-
-    var ingredientListItems = this.props.ingredients.map(function(ingredient){
+    var ingredientListItems =
+    this.props.ingredients.map(function(ingredient){
       var newAmount = ingredient.get('amount') * factor;
       var amount = parseInt(newAmount) === newAmount ? newAmount : newAmount.toFixed(2);
       return (
@@ -68,17 +68,23 @@ var IngredientsList = React.createClass({
 
 var AdjustRecipeContainer = React.createClass({
   getInitialState: function(){
+
     return {
       factor: 1,
       servings: 0
     };
   },
 
+  componentWillReceiveProps: function(nextProps){
+  this.setState({servings: nextProps.recipe.get('servings')});
+},
+
   adjustServings: function(newServings){
     var recipe = this.props.recipe;
     var formFactor = (newServings/recipe.get('servings')) || 1;
     this.setState({servings: newServings, factor: formFactor});
   },
+
   render: function(){
     var ingredients = this.props.recipe.get('ingredients');
     return(

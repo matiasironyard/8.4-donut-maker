@@ -13,6 +13,7 @@ var ItemListing = React.createClass({
 var Listing = React.createClass({
   render: function(){
     var recipeList = this.props.recipes.map(function(recipe){
+      console.log(recipeList);
       return <ItemListing key={recipe.cid} recipe={recipe}/>
     });
     return (
@@ -21,7 +22,7 @@ var Listing = React.createClass({
       </div>
     )
   }
-})
+});
 
 
 
@@ -43,7 +44,6 @@ var AllRecipesContainer= React.createClass({
   render: function(){
     return (
       <Listing recipes={this.state.recipeCollection}/>
-
     )
   }
 });
