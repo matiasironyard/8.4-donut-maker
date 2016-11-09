@@ -1,5 +1,6 @@
 var React = require('react');
 var models = require('../models/recipe');
+var Template = require('../templates/templates.jsx');
 
 var ItemListing = React.createClass({
   render: function(){
@@ -43,7 +44,9 @@ var AllRecipesContainer= React.createClass({
 
   render: function(){
     return (
-      <Listing recipes={this.state.recipeCollection}/>
+      <Template>
+        <Listing recipes={this.state.recipeCollection}/>
+      </Template>
     )
   }
 });

@@ -16,32 +16,64 @@ img {
   max-width: 100%;
 }
 
-.container{
-  .recipe-pane{
-    box-shadow: 10px 10px 5px -5px rgba(0,0,0,0.75);
-    .recipe-header{
-      border: 1px dotted grey;
+.nav-bar-col{
+  padding-top: 20px;
+  background-color: #D63F1F;
+}
+.header-col{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+  background-image: url("http://www.osbativywild.com/img/site_specific/uploads/background-events-osb.jpg");
+  .restaurant-name{
+    font-family: 'Lobster', cursive;
+    font-size: 50px;
+  }
+.subtitle{
+  font-family: 'Poppins', sans-serif;
+}
+}
+.recipe-form{
+  font-family: 'Poppins', sans-serif;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  h3{
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    color: #566573;
+  }
+  h4{
+    text-transform: uppercase;
+    color: #566573;
+  }
+  label {
+    text-transform: uppercase;
+    padding-right: 10px;
+  }
+  input {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  textarea{
+    margin-top: 10px;
+  }
+  .form-inLine{
+    button{
       padding-top: 10px;
-      .servings-box{
-        display: inline-flex;
-        border: 1px solid grey;
-        width: 40px;
-      }
-      .header-span{
-        font-style: italic;
-      }
-      input{
-        width: 40px;
-      }
-      button{
-        float: right;
-      }
-      .recipe-message{
-        border: 1px dotted grey;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        padding: 10px;
-      }
+      padding-bottom: 10px;
     }
   }
+
+  .form-buttons{
+    padding-top: 20px;
+  }
+}
+
+.footer-col{
+  padding-top: 20px;
+  padding-bottom: 10px;
+  color: #EAECEE;
+  background-color: #D63F1F;
+  text-align: center;
+  font-size: 12px;
 }

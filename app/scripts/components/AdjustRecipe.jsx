@@ -1,7 +1,7 @@
 var React = require('react');
 
 var models = require('../models/recipe');
-var TemplateComponent = ('./templates.jsx').TemplateComponent;
+var Template = require('../templates/templates.jsx');
 
 
 var AdjustRecipeForm = React.createClass({
@@ -88,13 +88,12 @@ var AdjustRecipeContainer = React.createClass({
   render: function(){
     var ingredients = this.props.recipe.get('ingredients');
     return(
-
+      <Template>
         <div className="col-md-6">
             <AdjustRecipeForm servings={this.state.servings} adjustServings={this.adjustServings}/>
             <IngredientsList factor={this.state.factor} ingredients={ingredients} />
-
         </div>
-
+      </Template>
     );
   }
 });

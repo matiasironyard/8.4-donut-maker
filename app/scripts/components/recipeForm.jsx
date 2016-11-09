@@ -3,6 +3,7 @@ var React = require('react');
 var Backbone = require('backbone');
 
 var models = require('../models/recipe');
+var Template = require('../templates/templates.jsx');
 
 
 var FormIngredientsList = React.createClass({
@@ -22,7 +23,7 @@ var FormIngredientsList = React.createClass({
   },
   render: function(){
     return(
-      <div>
+      <div classNam="col-md-12">
         <div className="form-group">
           <label className="sr-only" htmlFor="ingredient-amount">Amount</label>
           <input onChange={this.handleInputChange} type="text" name="amount" value={this.state.amount}
@@ -69,6 +70,7 @@ handleSubmit: function(e){
 render: function(){
   var recipe = this.props.recipe;
   var heading = recipe.isNew() ? 'Edd' : 'Edit';
+  var name = this.props.recipe.get('name');
   var ingredientFormset = recipe.get('ingredients').map(function(ingredient){
     return (
       <FormIngredientsList key={ingredient.cid} ingredient={ingredient}/>
@@ -76,26 +78,30 @@ render: function(){
   });
 
   return (
-    <form className="form-inline">
-      <h3>{heading} Awesomness!</h3>
+    <form className="form-inline col-md-12 recipe-form">
+      <h4>{heading} Recipe</h4>
+      <h3>{name}</h3>
       <div className="form-group">
-        <label htmlFor="recipe-name">Recipe Name</label>
+        <label htmlFor="form-heading recipe-name">Recipe Name</label>
         <input onChange={this.handleInputChange} value={this.state.name} name="name" type="text" className="form-control" id="recipe-name" placeholder="Rum Donut"/>
       </div>
       <div className="form-group">
-        <label htmlFor="recipe-servings">Makes</label>
+        <label htmlFor="form-heading recipe-servings">Makes</label>
         <input  onChange={this.handleInputChange} value={this.state.servings} name="servings" type="text" className="form-control" id="recipe-servings" placeholder="# of servings"/>
       </div>
       <h4>List Of Ingredients</h4>
 
-      <div className="form-inLine">
-          //list of Ingredients
+      <div className="form-inLine col-md-8">
           {ingredientFormset}
+            <button className="add-ingredient" type="button" onClick = {this.props.addIngredient} className = "btn btn-primary">Add Another Ingredient</button>
       </div>
 
-      <button type="button" onClick = {this.props.addIngredient} className = "btn btn-primary">Add Another Ingredient</button>
-      <textarea className="form-control" id="recipe-instructions" rows="5"></textarea>
-      <button type="submit" className="btn btn-success">Save Recipe</button>
+      <div className="form-group col-md-8">
+        <textarea className="form-control" id="recipe-instructions" rows="5" placeholder="Instructions"></textarea>
+     </div>
+     <div className="form-buttons col-md-12">
+       <button type="submit" className="btn btn-success">Save Recipe</button>
+      </div>
     </form>
   );
 }
@@ -149,10 +155,9 @@ var AddEditRecipeContainer = React.createClass({
 
   render: function(){
     return (
-      <div>
-        <h1>Test</h1>
+      <Template>
         <Form recipe={this.state.recipe} saveRecipe={this.saveRecipe} addIngredient={this.addIngredient}/>
-      </div>
+      </Template>
     )
   }
 });
