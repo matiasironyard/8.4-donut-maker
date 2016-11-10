@@ -15,11 +15,12 @@ var FormIngredientsList = React.createClass({
   },
   handleInputChange: function(e){
     var target = e.target;
-    // console.log(target);
+    console.log('target', target);
     var newState = {};
     newState[target.name] = target.value;
-    this.props.ingredient.set(target.name, target.value);
     this.setState(newState);
+    this.props.ingredient.set(target.name, target.value);
+
   },
   render: function(){
     return(
@@ -62,6 +63,11 @@ handleInputChange: function(e){
   this.setState(newState);
 },
 
+handleServings: function(e){
+  var servings = e.target.value;
+  this.setState({servings: servings})
+},
+
 handleSubmit: function(e){
   e.preventDefault();
   this.props.saveRecipe(this.state);
@@ -78,7 +84,7 @@ render: function(){
   });
 
   return (
-    <form className="form-inline col-md-12 recipe-form">
+    <form onSubmit={this.handleSubmit} className="form-inline col-md-12 recipe-form">
       <h4>{heading} Recipe</h4>
       <h3>{name}</h3>
       <div className="form-group">
@@ -87,17 +93,18 @@ render: function(){
       </div>
       <div className="form-group">
         <label htmlFor="form-heading recipe-servings">Makes</label>
-        <input  onChange={this.handleInputChange} value={this.state.servings} name="servings" type="text" className="form-control" id="recipe-servings" placeholder="# of servings"/>
+        <input  onChange={this.handleServings} value={this.state.servings} name="servings" type="number" className="form-control" id="recipe-servings" placeholder="# of servings"/>
       </div>
       <h4>List Of Ingredients</h4>
 
       <div className="form-inLine col-md-8">
           {ingredientFormset}
-            <button className="add-ingredient" type="button" onClick = {this.props.addIngredient} className = "btn btn-primary">Add Another Ingredient</button>
+            <button className="add-ingredient" type="button" onClick = {this.props.addIngredient} className = "btn btn-primary">Add Ingredient</button>
+            <button className="remove-ingredient" type="button" onClick = {this.props.removeIngredient} className = "btn btn-danger">Remove Ingredient</button>
       </div>
 
       <div className="form-group col-md-8">
-        <textarea className="form-control" id="recipe-instructions" rows="5" placeholder="Instructions"></textarea>
+        <textarea onChange={this.handleInputChange} value={this.state.instructions} name="instructions" className="form-control" id="recipe-instructions" rows="5" placeholder="Instructions"></textarea>
      </div>
      <div className="form-buttons col-md-12">
        <button type="submit" className="btn btn-success">Save Recipe</button>
@@ -141,6 +148,12 @@ var AddEditRecipeContainer = React.createClass({
     var ingredients = recipe.get('ingredients');
     console.log(ingredients);
     ingredients.add([{}]);
+    this.setState({recipe: recipe})
+  },
+
+  removeIngredient: function(){
+    var ingredients = this.state.recipe.get('ingredients');
+    ingredients.remove();
     this.setState({recipe: recipe})
   },
 

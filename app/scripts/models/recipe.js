@@ -68,6 +68,7 @@ var IngredientCollection = ParseCollection.extend({
 
 var Recipe = ParseModel.extend({
   defaults: {
+    
     ingredients: new IngredientCollection()
   },
   urlRoot: 'https://matias-recipe.herokuapp.com/classes/Recipe',

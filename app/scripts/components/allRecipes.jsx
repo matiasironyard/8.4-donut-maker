@@ -3,22 +3,28 @@ var models = require('../models/recipe');
 var Template = require('../templates/templates.jsx');
 
 var ItemListing = React.createClass({
+
   render: function(){
     var recipe = this.props.recipe;
     console.log(recipe);
     return (
-      <a href={'#recipes/' + recipe.get('objectId') + '/'} className="list-group-item">{recipe.get('name')}</a>
-    )
+      <span><a href={'#recipes/' + recipe.get('objectId') + '/'} className="list-group-item">{recipe.get('name')}</a><button onClick={this.deleteRecipe} type="button" className="btn btn-danger">delete</button></span>
+    );
   }
 });
 var Listing = React.createClass({
+
   render: function(){
     var recipeList = this.props.recipes.map(function(recipe){
       console.log(recipeList);
-      return <ItemListing key={recipe.cid} recipe={recipe}/>
+      return (
+        <div>
+          <ItemListing key={recipe.cid} recipe={recipe}/>
+      </div>
+      );
     });
     return (
-      <div>
+      <div className="col-sm-5">
         {recipeList}
       </div>
     )
@@ -41,6 +47,13 @@ var AllRecipesContainer= React.createClass({
     });
     console.log('recipe collection', recipeCollection);
   },
+
+  deleteRecipe: function(){
+     var recipe = this.state.recipe;
+     recipe.destroy();
+     this.setState({recipe: recipe});
+   },
+
 
   render: function(){
     return (

@@ -7,11 +7,11 @@ var Template = require('../templates/templates.jsx');
 var AdjustRecipeForm = React.createClass({
   getInitialState: function(){
     return {
-      servings: 1
+      servings: this.props.recipe.get('servings')
     };
   },
 componentWillReceiveProps: function(nextProps){
-  this.setState({servings: nextProps.servings});
+  this.setState({servings: nextProps.recipe.get('servings')});
 },
 
 handleServings: function(e){
@@ -71,18 +71,19 @@ var AdjustRecipeContainer = React.createClass({
 
     return {
       factor: 1,
-      servings: 0
+      // servings: this.props.recipe.get('servings')
     };
   },
-
-  componentWillReceiveProps: function(nextProps){
-  this.setState({servings: nextProps.recipe.get('servings')});
-},
+//***
+//By seting the servings in the form components, componentWillRecieveProps, to what we have in this block, we avoid having it to do it here.
+//   componentWillReceiveProps: function(nextProps){
+//   this.setState({servings: nextProps.recipe.get('servings')});
+// },
 
   adjustServings: function(newServings){
     var recipe = this.props.recipe;
     var formFactor = (newServings/recipe.get('servings')) || 1;
-    this.setState({servings: newServings, factor: formFactor});
+    this.setState({factor: formFactor});
   },
 
   render: function(){
@@ -90,7 +91,8 @@ var AdjustRecipeContainer = React.createClass({
     return(
       <Template>
         <div className="col-md-6">
-            <AdjustRecipeForm servings={this.state.servings} adjustServings={this.adjustServings}/>
+            <AdjustRecipeForm recipe={this.state.recipe} adjustServings={this.adjustServings}/>
+            <h3>Updated Ingredients Amounts</h3>
             <IngredientsList factor={this.state.factor} ingredients={ingredients} />
         </div>
       </Template>
