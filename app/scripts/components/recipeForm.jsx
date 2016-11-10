@@ -64,7 +64,9 @@ handleInputChange: function(e){
 },
 
 handleServings: function(e){
-  var servings = e.target.value;
+  var value = e.target.value;
+  var servings = parseInt(value);
+  console.log('servings', servings);
   this.setState({servings: servings})
 },
 

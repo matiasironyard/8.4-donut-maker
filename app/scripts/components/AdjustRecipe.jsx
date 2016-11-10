@@ -92,7 +92,7 @@ var AdjustRecipeContainer = React.createClass({
       <Template>
         <div className="col-md-6">
             <AdjustRecipeForm recipe={this.state.recipe} adjustServings={this.adjustServings}/>
-            <h3>Updated Ingredients Amounts</h3>
+            <h3>Updated Ingredients </h3>
             <IngredientsList factor={this.state.factor} ingredients={ingredients} />
         </div>
       </Template>
