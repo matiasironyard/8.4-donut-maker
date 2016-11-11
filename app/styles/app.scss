@@ -185,9 +185,16 @@ img {
       padding-left: 10px;
       color: #239B56;
     }
+    .glyphicon-plus:hover{
+      transform: scale(1.1);
+    }
     .glyphicon-minus{
       // float: right;
-      color: #C0392B;
+      color: #CD6155;
+    }
+    .glyphicon-minus:hover{
+      transform: scale(1.1);
+      color: red;
     }
   }
 

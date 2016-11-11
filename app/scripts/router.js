@@ -8,6 +8,7 @@ var AdjustRecipeContainer = require('./components/AdjustRecipe.jsx').AdjustRecip
 var AllRecipesContainer = require('./components/allRecipes.jsx').AllRecipesContainer;
 var SingleRecipeContainer = require('./components/singleRecipeView.jsx').SingleRecipeContainer;
 var AddEditRecipeContainer = require('./components/recipeForm.jsx').AddEditRecipeContainer;
+var LoginContainer=require('./components/login.jsx').LoginContainer;
 
 var AppRouter = Backbone.Router.extend({
   routes: {
@@ -24,7 +25,7 @@ var AppRouter = Backbone.Router.extend({
 
   index: function(){
     ReactDOM.render(
-      React.createElement(AdjustRecipeContainer),
+      React.createElement(LoginContainer, {router: this}),
       document.getElementById('app')
     );
   },

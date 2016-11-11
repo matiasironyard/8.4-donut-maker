@@ -3,7 +3,7 @@ var React = require('react');
 var Backbone = require('backbone');
 var ReactQuill = require('react-quill');
 
-// var trumbowyg = require('react-trumbowyg');
+var trumbowyg = require('trumbowyg');
 
 var models = require('../models/recipe');
 var Template = require('../templates/templates.jsx');
@@ -134,7 +134,7 @@ render: function(){
             {ingredientFormset}
             <div>
               <span type="button" onClick = {this.props.addIngredient} className = "glyphicon glyphicon-plus"></span>
-              <span type="button" onClick = {this.props.removeIngredients} className = "glyphicon glyphicon-minus">-</span>
+              <span type="button" onClick = {this.props.removeIngredients} className = "glyphicon glyphicon-minus"></span>
             </div>
         </div>
         <div className="col-md-12">

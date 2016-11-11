@@ -2,6 +2,8 @@ console.log('hello adjust recipe');
 var React = require('react');
 var models = require('../models/recipe');
 var Template = require('../templates/templates.jsx');
+var Fraction = require('fractional').Fraction;
+
 
 var AdjustRecipeForm = React.createClass({
   getInitialState: function(){
@@ -50,9 +52,11 @@ var IngredientsList = React.createClass({
     this.props.ingredients.map(function(ingredient){
       var newAmount = ingredient.get('amount') * factor;
       var amount = parseInt(newAmount) === newAmount ? newAmount : newAmount.toFixed(2);
+      var f = new Fraction(amount).toString();
+      console.log(f);
       return (
             <tr key={ingredient.cid} className="ingredients-li">
-              <td className="ingredient-details" >{amount}</td>
+              <td className="ingredient-details" >{f}</td>
               <td className="ingredient-details">{ingredient.get('units')}</td>
               <td classNae="ingredient-details">{ingredient.get('method')}</td>
               <td className="ingredient-details">{ingredient.get('name')}</td>
