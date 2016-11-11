@@ -1,23 +1,22 @@
+console.log('hello adjust recipe');
 var React = require('react');
-
 var models = require('../models/recipe');
 var Template = require('../templates/templates.jsx');
-
 
 var AdjustRecipeForm = React.createClass({
   getInitialState: function(){
     return {
       servings: this.props.recipe.get('servings')
     };
-  },
-componentWillReceiveProps: function(nextProps){
-  this.setState({servings: nextProps.recipe.get('servings')});
 },
+
+// componentWillReceiveProps: function(nextProps){
+//   this.setState({servings: nextProps.recipe.get('servings')});
+// },
 
 handleServings: function(e){
   //setState to track the changes in value
   this.setState({servings: e.target.value});
-
   this.props.adjustServings(e.target.value);
 },
 
@@ -38,7 +37,6 @@ handleSubmit: function(e){
     )
   }
 });
-
 
 var IngredientsList = React.createClass({
   render: function(){
@@ -64,11 +62,8 @@ var IngredientsList = React.createClass({
   }
 });
 
-
-
 var AdjustRecipeContainer = React.createClass({
   getInitialState: function(){
-
     return {
       factor: 1,
       // servings: this.props.recipe.get('servings')
@@ -88,14 +83,12 @@ var AdjustRecipeContainer = React.createClass({
 
   render: function(){
     var ingredients = this.props.recipe.get('ingredients');
+    console.warn(ingredients);
     return(
-      <Template>
-        <div className="col-md-6">
-            <AdjustRecipeForm recipe={this.state.recipe} adjustServings={this.adjustServings}/>
-            <h3>Updated Ingredients </h3>
-            <IngredientsList factor={this.state.factor} ingredients={ingredients} />
-        </div>
-      </Template>
+      <div className="col-md-6">
+          <AdjustRecipeForm recipe={this.props.recipe} adjustServings={this.adjustServings} servings={this.props.recipe.get('servings')}/>
+          <IngredientsList factor={this.state.factor} ingredients={ingredients} />
+      </div>
     );
   }
 });

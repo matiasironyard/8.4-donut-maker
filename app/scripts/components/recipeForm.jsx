@@ -1,4 +1,4 @@
-console.log('hello add form');
+// console.log('hello add form');
 var React = require('react');
 var Backbone = require('backbone');
 
@@ -8,6 +8,7 @@ var Template = require('../templates/templates.jsx');
 
 var FormIngredientsList = React.createClass({
   getInitialState: function(){
+
     return this.props.ingredient.toJSON();
   },
   componentWillReceiveProps: function(newProps){
@@ -74,14 +75,21 @@ handleSubmit: function(e){
   e.preventDefault();
   this.props.saveRecipe(this.state);
 },
-
+handleDelete: function(){
+  var self = this;
+  var recipe = self.props.recipe;
+  console.log(this.props);
+    this.props.deleteRecipe(recipe);
+    this.setState({recipe: recipe})
+  },
 render: function(){
   var recipe = this.props.recipe;
+
   var heading = recipe.isNew() ? 'Edd' : 'Edit';
   var name = this.props.recipe.get('name');
   var ingredientFormset = recipe.get('ingredients').map(function(ingredient){
     return (
-      <FormIngredientsList key={ingredient.cid} ingredient={ingredient}/>
+      <div><FormIngredientsList key={ingredient.cid} ingredient={ingredient} /></div>
     )
   });
 
@@ -97,12 +105,12 @@ render: function(){
         <label htmlFor="form-heading recipe-servings">Makes</label>
         <input  onChange={this.handleServings} value={this.state.servings} name="servings" type="number" className="form-control" id="recipe-servings" placeholder="# of servings"/>
       </div>
-      <h4>List Of Ingredients</h4>
-
-      <div className="form-inLine col-md-8">
+      <h4 className="form-ingredient-list">Recipe Ingredients</h4>
+      <p>Enter Ingredients Below</p>
+      <div className="form-inLine col-md-10">
           {ingredientFormset}
             <button className="add-ingredient" type="button" onClick = {this.props.addIngredient} className = "btn btn-primary">Add Ingredient</button>
-            <button className="remove-ingredient" type="button" onClick = {this.props.removeIngredient} className = "btn btn-danger">Remove Ingredient</button>
+            <button className="remove-ingredient" type="button" onClick = {this.props.removeIngredients} className = "btn btn-warning">Remove</button>
       </div>
 
       <div className="form-group col-md-8">
@@ -133,6 +141,7 @@ var AddEditRecipeContainer = React.createClass({
   },
 
   getRecipe: function(){
+    console.log(this.state.recipe);
     var recipe = this.state.recipe,
     recipeId = this.props.recipeId;
     if(!recipeId){
@@ -148,20 +157,22 @@ var AddEditRecipeContainer = React.createClass({
   addIngredient: function(){
     var recipe = this.state.recipe;
     var ingredients = recipe.get('ingredients');
-    console.log(ingredients);
+    console.log('ingredients @ form', ingredients);
     ingredients.add([{}]);
     this.setState({recipe: recipe})
   },
 
-  removeIngredient: function(){
-    var ingredients = this.state.recipe.get('ingredients');
-    ingredients.remove();
+  removeIngredients: function(){
+    var recipe = this.state.recipe;
+    var ingredients = recipe.get('ingredients');
+    console.log('ingredients @ form', ingredients);
+    ingredients.pop([{}]);
     this.setState({recipe: recipe})
   },
 
   saveRecipe: function(recipeData){
     var recipe = this.state.recipe;
-    console.log(recipe);
+    console.log('recipe @ save form', recipe);
     recipe.set(recipeData);
     recipe.save().then(()=>{
       Backbone.history.navigate('recipes/' + recipe.get('objectId') + '/', {trigger: true});
@@ -171,7 +182,7 @@ var AddEditRecipeContainer = React.createClass({
   render: function(){
     return (
       <Template>
-        <Form recipe={this.state.recipe} saveRecipe={this.saveRecipe} addIngredient={this.addIngredient}/>
+        <Form recipe={this.state.recipe} saveRecipe={this.saveRecipe} ingredients={this.state.recipe.get('ingredients')} addIngredient={this.addIngredient} removeIngredients={this.removeIngredients}/>
       </Template>
     )
   }

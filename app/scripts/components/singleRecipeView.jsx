@@ -1,6 +1,7 @@
 var React = require('react');
 
 var models = require('../models/recipe');
+var Template = require('../templates/templates.jsx');
 var AdjustRecipeContainer = require('./adjustRecipe.jsx').AdjustRecipeContainer;
 
 var RecipeHeader = React.createClass({
@@ -24,7 +25,7 @@ var SingleRecipeContainer = React.createClass({
 
   componentWillMount: function(){
     var recipe = this.state.recipe;
-    var recipeId = this.props.recipeId
+    var recipeId = this.props.recipeId;
     if(!recipeId){
       return;
     }
@@ -37,14 +38,13 @@ var SingleRecipeContainer = React.createClass({
   },
   render: function(){
     return(
-      <div>
+      <Template>
         <RecipeHeader recipe={this.state.recipe}/>
         <AdjustRecipeContainer recipe={this.state.recipe}/>
-      </div>
+      </Template>
     );
   }
 });
-
 
 module.exports = {
   SingleRecipeContainer: SingleRecipeContainer

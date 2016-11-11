@@ -36,8 +36,8 @@ var AppRouter = Backbone.Router.extend({
     );
   },
 
-
   singleRecipeView: function(recipeId){
+    console.log('singleRecipeView');
     ReactDOM.render(
       React.createElement(SingleRecipeContainer, {recipeId: recipeId}),
       document.getElementById('app')
@@ -45,6 +45,7 @@ var AppRouter = Backbone.Router.extend({
   },
 
   allRecipes: function(){
+
     ReactDOM.render(
       React.createElement(AllRecipesContainer),
       document.getElementById('app')

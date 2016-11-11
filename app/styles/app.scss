@@ -42,7 +42,7 @@ img {
     text-transform: uppercase;
     color: #566573;
   }
-  h4{
+  .form-ingredient-list{
     text-transform: uppercase;
     color: #566573;
   }
@@ -56,11 +56,15 @@ img {
   }
   textarea{
     margin-top: 10px;
+    width: 800px;
   }
   .form-inLine{
     button{
       padding-top: 10px;
       padding-bottom: 10px;
+    }
+    .remove-ingredient{
+      float: right;
     }
   }
 

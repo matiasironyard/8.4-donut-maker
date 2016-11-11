@@ -1,6 +1,5 @@
 var Backbone = require('backbone');
 
-var models = require('../models/recipe');
 //setup Parse models
 /**
 *Parse Model and Collection
@@ -68,7 +67,7 @@ var IngredientCollection = ParseCollection.extend({
 
 var Recipe = ParseModel.extend({
   defaults: {
-    servings:2,
+    servings:0,
     ingredients: new IngredientCollection()
   },
   urlRoot: 'https://matias-recipe.herokuapp.com/classes/Recipe',
