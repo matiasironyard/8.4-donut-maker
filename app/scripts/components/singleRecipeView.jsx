@@ -7,9 +7,8 @@ var AdjustRecipeContainer = require('./adjustRecipe.jsx').AdjustRecipeContainer;
 var RecipeHeader = React.createClass({
   render: function(){
     return(
-      <div>
-        <h1>{this.props.recipe.get('name')}</h1>
-        <a href={'#recipes/' + this.props.recipe.get('objectId') + '/edit/'}>Edit Recipe</a>
+      <div className="col-md-8 col-md-offset-2 single-view-header">
+        <h1 className="edit-recipe-header" >{this.props.recipe.get('name')}</h1>
       </div>
     );
   }

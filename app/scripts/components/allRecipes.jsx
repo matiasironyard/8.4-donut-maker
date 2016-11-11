@@ -15,7 +15,10 @@ var ItemListing = React.createClass({
     var recipe = this.props.recipe;
     // console.log('allRecipes', recipe);
     return (
-      <div className="recipe-list-items"><a href={'#recipes/' + recipe.get('objectId') + '/'} className="list-group-item">{recipe.get('name')}</a><button onClick={this.handleDelete} type="button" className="btn btn-danger">delete</button></div>
+      <div className="recipe-list-items col-md-10">
+        <a href={'#recipes/' + recipe.get('objectId') + '/'} className="list-group-item">{recipe.get('name')}</a>
+        <button onClick={this.handleDelete} type="button" className="btn btn-danger">delete</button>
+      </div>
     );
   }
 });
@@ -31,7 +34,8 @@ var Listing = React.createClass({
       );
     });
     return (
-      <div className="col-sm-5 recipe-list">
+      <div className="col-sm-8 col-md-offset-2 recipe-list">
+        <h3>All Recipes</h3>
         {recipeList}
       </div>
     )

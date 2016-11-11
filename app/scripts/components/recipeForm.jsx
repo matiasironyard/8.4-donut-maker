@@ -94,9 +94,9 @@ render: function(){
   });
 
   return (
-    <form onSubmit={this.handleSubmit} className="form-inline col-md-12 recipe-form">
-      <h4>{heading} Recipe</h4>
-      <h3>{name}</h3>
+    <form onSubmit={this.handleSubmit} className="form-inline col-md-8 col-md-offset-2 recipe-form">
+      <h3 className="form-header">{heading} Recipe</h3>
+      <h4 className="form-subheader">{name}</h4>
       <div className="form-group">
         <label htmlFor="form-heading recipe-name">Recipe Name</label>
         <input onChange={this.handleInputChange} value={this.state.name} name="name" type="text" className="form-control" id="recipe-name" placeholder="Rum Donut"/>
@@ -105,15 +105,17 @@ render: function(){
         <label htmlFor="form-heading recipe-servings">Makes</label>
         <input  onChange={this.handleServings} value={this.state.servings} name="servings" type="number" className="form-control" id="recipe-servings" placeholder="# of servings"/>
       </div>
-      <h4 className="form-ingredient-list">Recipe Ingredients</h4>
-      <p>Enter Ingredients Below</p>
-      <div className="form-inLine col-md-10">
-          {ingredientFormset}
-            <button className="add-ingredient" type="button" onClick = {this.props.addIngredient} className = "btn btn-primary">Add Ingredient</button>
-            <button className="remove-ingredient" type="button" onClick = {this.props.removeIngredients} className = "btn btn-warning">Remove</button>
+      <div className="form-ingredient-list col-md-12">
+        <h4 ingredients-header>Recipe Ingredients</h4>
+        <p>Enter Ingredients Below</p>
+        <div className="form-inLine">
+            {ingredientFormset}
+              <span type="button" onClick = {this.props.addIngredient} className = "glyphicon glyphicon-plus"></span>
+              <span type="button" onClick = {this.props.removeIngredients} className = "glyphicon glyphicon-minus">-</span>
+        </div>
       </div>
 
-      <div className="form-group col-md-8">
+      <div className="form-group col-md-12">
         <textarea onChange={this.handleInputChange} value={this.state.instructions} name="instructions" className="form-control" id="recipe-instructions" rows="5" placeholder="Instructions"></textarea>
      </div>
      <div className="form-buttons col-md-12">

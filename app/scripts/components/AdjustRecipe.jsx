@@ -27,12 +27,15 @@ handleSubmit: function(e){
 
   render:function(){
     return(
-        <form onSubmit = {this.handleSubmit} className="form-inline">
+      <div>
+        <a href={'#recipes/' + this.props.recipe.get('objectId') + '/edit/'}><span className="edit-recipe glyphicon glyphicon-pencil"/></a>
+        <form onSubmit = {this.handleSubmit} className="form-inline servings">
           <div className="form-group">
-            <label htmlFor="servings">Servings</label>
+            <label htmlFor="servings">Servings </label>
             <input onChange={this.handleServings} value={this.state.servings} type="text" className="form-control" id="original-servings" placeholder="original servings"/>
           </div>
         </form>
+      </div>
 
     )
   }
@@ -46,9 +49,11 @@ var IngredientsList = React.createClass({
       var newAmount = ingredient.get('amount') * factor;
       var amount = parseInt(newAmount) === newAmount ? newAmount : newAmount.toFixed(2);
       return (
-
             <li key={ingredient.cid} className="ingredients-li">
-              <input type="checkbox"/> {amount} {ingredient.get('units')} {ingredient.get('name')}
+              <span className="glyphicon glyphicon-menu-right"/>
+              <span className="ingredient-details" >Amount: {amount}</span>
+              <span className="ingredient-details">Units: {ingredient.get('units')}</span>
+              <span className="ingredient-details">Ingredient: {ingredient.get('name')}</span>
             </li>
       );
     });
@@ -85,7 +90,7 @@ var AdjustRecipeContainer = React.createClass({
     var ingredients = this.props.recipe.get('ingredients');
     console.warn(ingredients);
     return(
-      <div className="col-md-6">
+      <div className="col-md-8 col-md-offset-2 calculator">
           <AdjustRecipeForm recipe={this.props.recipe} adjustServings={this.adjustServings} servings={this.props.recipe.get('servings')}/>
           <IngredientsList factor={this.state.factor} ingredients={ingredients} />
       </div>

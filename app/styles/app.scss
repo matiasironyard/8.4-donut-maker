@@ -18,33 +18,122 @@ img {
 
 .nav-bar-col{
   padding-top: 20px;
-  background-color: #D63F1F;
+  // background-color: #F39C12;
 }
+
 .header-col{
   padding-top: 20px;
-  padding-bottom: 20px;
-  color: #fff;
-  background-image: url("http://www.osbativywild.com/img/site_specific/uploads/background-events-osb.jpg");
+  padding-bottom: 30px;
+  color: #D35400;
+  background-image: url("http://thehalfmoonbakery.com/images/background-pattern-02b.jpg");
+  background-size: cover;
   .restaurant-name{
     font-family: 'Lobster', cursive;
     font-size: 50px;
+    text-align: center;
   }
-.subtitle{
+  .subtitle{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+  }
+  .subtitle-since{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 2px solid #E67E22;
+    border-bottom: 2px solid #E67E22;
+    width: 300px;
+  }
+}
+
+.recipe-list{
+  margin-top: 30px;
+  h3{
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+  }
+  .recipe-list-items{
+    padding-bottom: 5px;
+    padding-top: 10px;
+    border-bottom: 1px solid grey;
+  }
+  .list-group-item{
+    display: inline-block;
+    border: 0px;
+  }
+  .btn{
+    margin-left: 30px;
+    float: right;
+  }
+}
+
+.single-view-header{
+  display: inline-grid;
+  padding-top: 30px;
+  padding-bottom: 5px;
+  .edit-recipe-header{
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+.calculator{
+  background-color: #F9E79F;
+  border-radius: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   font-family: 'Poppins', sans-serif;
+  .servings{
+    border-bottom: 1px solid #D0D3D4;
+    padding-bottom: 15px;
+  }
+  .glyphicon-pencil{
+    font-size: 25px;
+    float: right;
+  }
+  .ingredients-ul{
+    list-style-type: none;
+    .ingredients-li{
+      padding-top: 10px;
+      .ingredient-details{
+        padding-right: 30px;
+      }
+      .glyphicon-menu-right{
+        padding-right: 10px;
+      }
+    }
+
+  }
+
 }
-}
+
 .recipe-form{
   font-family: 'Poppins', sans-serif;
   padding-top: 20px;
   padding-bottom: 20px;
-  h3{
-    padding-bottom: 20px;
+  .form-header{
     text-transform: uppercase;
-    color: #566573;
+  }
+  .form-subheader{
+    text-transform: uppercase;
   }
   .form-ingredient-list{
     text-transform: uppercase;
     color: #566573;
+    background-color: #FCF3CF;
+    border-radius: 10px;
+    h4{
+      border-radius: 10px;
+      padding-left: 5px;
+      padding-top: 10px;
+    }
+    p{
+      padding-left: 5px;
+      padding-bottom: 10px;
+      text-transform: uppercase;
+      color: #566573;
+    }
   }
   label {
     text-transform: uppercase;
@@ -54,33 +143,39 @@ img {
     margin-right: 10px;
     margin-bottom: 10px;
   }
-  textarea{
-    margin-top: 10px;
-    width: 800px;
-  }
   .form-inLine{
-    button{
-      padding-top: 10px;
+    display: inline;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    span{
       padding-bottom: 10px;
+      border-radius: 100%;
+      font-size: 15px;
     }
-    .remove-ingredient{
+    .glyphicon-plus{
+      color: #239B56;
+    }
+    .glyphicon-minus{
       float: right;
+      color: #C0392B;
     }
+  }
+  textarea{
+    margin-top: 15px;
+    width: 500px;
   }
 
   .form-buttons{
     padding-top: 20px;
   }
 }
-// .recipe-list-items{
-//   display: inline-block;
-//   button{
-//     float: right;
-//   }
-// }
+
 .footer-col{
+  margin-top: 20px;
   padding-top: 20px;
   padding-bottom: 10px;
+  border-top: 1px solid #566573;
   color: #566573;
   text-align: center;
   font-size: 12px;

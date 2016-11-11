@@ -19,8 +19,9 @@ function Template(props){
             </div>
             <div className="col-md-12 header-col">
               <div className="header-title">
-                <h1 className="restaurant-name">Two Cups of Flour Backery</h1>
+                <h1 className="restaurant-name">Two Cups of Flour Bakery</h1>
                 <h3 className="subtitle">Create and Share Tasty Recipes</h3>
+                <h5 className="subtitle-since">Baking Deliciousness Since 1995</h5>
               </div>
             </div>
             <div className="components">
