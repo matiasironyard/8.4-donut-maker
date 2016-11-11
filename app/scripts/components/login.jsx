@@ -2,7 +2,9 @@ var React = require('react');
 var Backbone = require('backbone');
 var ReactDOM = require('react-dom');
 var $ = require('jquery');
+var Template = require('../templates/templates.jsx');
 var setupParse= require('../parseUtilities').setupParse;
+var User = require('../models/users.js').User;
 
 //require router so that we can set the navigate after loging in.
 require('../router').router;
@@ -126,7 +128,7 @@ var LoginContainer = React.createClass({
     'password': signupData.password
   };
     $.post('https://matias-recipe.herokuapp.com/users', data).then(function(response){
-      console.log('what are you looking at? :)');
+      // console.log('what are you looking at? :)');
     });
   },
 
@@ -134,8 +136,10 @@ handleLogMeIn: function(logMeIn){
   var self = this;
   var username= logMeIn.email;
   var password= logMeIn.password;
+  var callbackObj =
   this.setState({username: logMeIn.username});
 
+// User.login(username, password);
   $.get('https://matias-recipe.herokuapp.com/login?username=' + username + '&password=' + password).then(function(response){
     var JSONdata= JSON.stringify(response);
     localStorage.setItem('username', response.username);

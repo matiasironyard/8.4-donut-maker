@@ -1,7 +1,7 @@
 var Backbone = require('backbone');
 
 var User = Backbone.Model.extend({
-  auth: function(){
+  auth: function(appId, apiKey){
     $.ajaxSetup({
       beforeSend: function(xhr){
         xhr.setRequestHeader("X-Parse-Application-Id", appId);

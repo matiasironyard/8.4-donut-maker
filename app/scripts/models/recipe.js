@@ -74,7 +74,7 @@ var Recipe = ParseModel.extend({
 
   save: function(key, val, options){
     //Parse needs an array for the 'ingredients' column. Use toJSON to convert the colleciton to an array.
-    this.set('ingredients', this.get('ingredients').toJSON());
+    this.set('ingredients', this.get('ingredients'));
 
 //we overloaded the save method. reset it...
     return ParseModel.prototype.save.apply(this, arguments);

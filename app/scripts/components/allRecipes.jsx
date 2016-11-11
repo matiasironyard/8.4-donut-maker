@@ -6,7 +6,7 @@ var ItemListing = React.createClass({
   handleDelete: function(){
     var self = this;
     var recipe = self.props.recipe;
-    console.log(this.props);
+    // console.log(this.props);
       this.props.deleteRecipe(recipe);
       this.setState({recipe: recipe})
     },
@@ -28,8 +28,8 @@ var Listing = React.createClass({
     var self = this;
     var recipeList = this.props.recipes.map(function(recipe){
       return (
-        <div>
-          <ItemListing key={recipe.cid} recipe={recipe} deleteRecipe={self.props.deleteRecipe}/>
+        <div key={recipe.cid}>
+          <ItemListing  recipe={recipe} deleteRecipe={self.props.deleteRecipe}/>
       </div>
       );
     });
@@ -51,7 +51,7 @@ var AllRecipesContainer= React.createClass({
 
   componentWillMount: function(){
     var recipeCollection = this.state.recipeCollection;
-    console.log('recipe collection @ all recipes', recipeCollection);
+    // console.log('recipe collection @ all recipes', recipeCollection);
     recipeCollection.fetch().then(() => {
       this.setState({recipeCollection: recipeCollection});
     });

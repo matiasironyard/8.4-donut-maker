@@ -2,11 +2,11 @@
 var React = require('react');
 var Backbone = require('backbone');
 var ReactQuill = require('react-quill');
-
 var trumbowyg = require('trumbowyg');
-
 var models = require('../models/recipe');
 var Template = require('../templates/templates.jsx');
+var User = require('../models/users.js').User;
+var ParseCollection=require('../models/recipe.js').ParseCollection;
 
 
 var FormIngredientsList = React.createClass({
@@ -17,15 +17,16 @@ var FormIngredientsList = React.createClass({
   componentWillReceiveProps: function(newProps){
     this.setState(newProps.ingredient.toJSON());
   },
+
   handleInputChange: function(e){
     var target = e.target;
-    console.log('target', target);
+    // console.log('target', target);
     var newState = {};
     newState[target.name] = target.value;
     this.setState(newState);
     this.props.ingredient.set(target.name, target.value);
-
   },
+
   render: function(){
     return(
       <div classNam="col-md-12">
@@ -86,18 +87,25 @@ handleInputChange: function(e){
 handleServings: function(e){
   var value = e.target.value;
   var servings = parseInt(value);
-  console.log('servings', servings);
+  // console.log('servings', servings);
   this.setState({servings: servings})
 },
 
 handleSubmit: function(e){
   e.preventDefault();
+  // ParseCollection.parseWhere(field, className, objectId);
+  // var recipeData = {
+  //   username: localStorage.getItem('username'),
+  //   recipe: this.props.recipe,
+  //   // user: parseWhere,
+  // }
+  // console.warn(recipeData);
   this.props.saveRecipe(this.state);
 },
 handleDelete: function(){
   var self = this;
   var recipe = self.props.recipe;
-  console.log(this.props);
+  // console.log(this.props);
     this.props.deleteRecipe(recipe);
     this.setState({recipe: recipe})
   },
@@ -109,9 +117,9 @@ render: function(){
 
   var ingredientFormset = recipe.get('ingredients').map(function(ingredient){
     return (
-      <div><FormIngredientsList key={ingredient.cid} ingredient={ingredient} />
+      <div key={ingredient.cid} >
+        <FormIngredientsList ingredient={ingredient} />
       </div>
-
     )
   });
 
@@ -126,6 +134,22 @@ render: function(){
       <div className="form-group">
         <label htmlFor="form-heading recipe-servings">Makes</label>
         <input  onChange={this.handleServings} value={this.state.servings} name="servings" type="number" className="form-control" id="recipe-servings" placeholder="# of servings"/>
+      </div>
+      <div className="form-group">
+        <label htmlFor="form-heading recipe-servings">Recipe Type</label>
+        <input  onChange={this.handleInputChange} value={this.state.type} name="recipetype" type="text" className="form-control" id="recipe-type" placeholder="Recipe Type"/>
+      </div>
+      <div className="form-group">
+        <label htmlFor="form-heading recipe-servings">Prep Time</label>
+        <input  onChange={this.handleInputChange} value={this.state.preptime} name="recipepreptime" type="text" className="form-control" id="recipe-prep-time" placeholder="Prep Time"/>
+      </div>
+      <div className="form-group">
+        <label htmlFor="form-heading recipe-servings">Cook Time</label>
+        <input  onChange={this.handleInputChange} value={this.state.cooktime} name="recipecooktime" type="text" className="form-control" id="recipe-cook-time" placeholder="Cook Time"/>
+      </div>
+      <div className="form-group">
+        <label htmlFor="form-heading recipe-servings">Cook Temp</label>
+        <input  onChange={this.handleInputChange} value={this.state.cooktemp} name="recipecooktemp" type="text" className="form-control" id="recipe-cook-temp" placeholder="Cook Temp"/>
       </div>
       <div className="form-ingredient-list col-md-10">
         <h4 ingredients-header>Recipe Ingredients</h4>
@@ -167,7 +191,7 @@ var AddEditRecipeContainer = React.createClass({
   },
 
   getRecipe: function(){
-    console.log(this.state.recipe);
+    // console.log(this.state.recipe);
     var recipe = this.state.recipe,
     recipeId = this.props.recipeId;
     if(!recipeId){
@@ -183,7 +207,7 @@ var AddEditRecipeContainer = React.createClass({
   addIngredient: function(){
     var recipe = this.state.recipe;
     var ingredients = recipe.get('ingredients');
-    console.log('ingredients @ form', ingredients);
+    // console.log('ingredients @ form', ingredients);
     ingredients.add([{}]);
     this.setState({recipe: recipe})
   },
@@ -191,14 +215,14 @@ var AddEditRecipeContainer = React.createClass({
   removeIngredients: function(){
     var recipe = this.state.recipe;
     var ingredients = recipe.get('ingredients');
-    console.log('ingredients @ form', ingredients);
+    // console.log('ingredients @ form', ingredients);
     ingredients.pop([{}]);
     this.setState({recipe: recipe})
   },
 
   saveRecipe: function(recipeData){
     var recipe = this.state.recipe;
-    console.log('recipe @ save form', recipe);
+    // console.log('recipe @ save form', recipe);
     recipe.set(recipeData);
     recipe.save().then(()=>{
       Backbone.history.navigate('recipes/' + recipe.get('objectId') + '/', {trigger: true});

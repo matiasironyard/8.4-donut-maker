@@ -1,4 +1,4 @@
-console.log('hello adjust recipe');
+// console.log('hello adjust recipe');
 var React = require('react');
 var models = require('../models/recipe');
 var Template = require('../templates/templates.jsx');
@@ -6,16 +6,16 @@ var Fraction = require('fractional').Fraction;
 
 
 var AdjustRecipeForm = React.createClass({
-  getInitialState: function(){
+  getInitialState: function(nextProps){
     return {
       servings: this.props.recipe.get('servings'),
       instructions: this.props.recipe.get('instructions'),
     };
 },
 
-// componentWillReceiveProps: function(nextProps){
-//   this.setState({servings: nextProps.recipe.get('servings')});
-// },
+componentWillReceiveProps: function(nextProps){
+  this.setState({servings: nextProps.recipe.get('servings')});
+},
 
 handleServings: function(e){
   //setState to track the changes in value
@@ -53,7 +53,7 @@ var IngredientsList = React.createClass({
       var newAmount = ingredient.get('amount') * factor;
       var amount = parseInt(newAmount) === newAmount ? newAmount : newAmount.toFixed(2);
       var f = new Fraction(amount).toString();
-      console.log(f);
+      // console.log(f);
       return (
             <tr key={ingredient.cid} className="ingredients-li">
               <td className="ingredient-details" >{f}</td>
@@ -107,9 +107,9 @@ var AdjustRecipeContainer = React.createClass({
 
   render: function(){
     var ingredients = this.props.recipe.get('ingredients');
-    console.warn(ingredients);
+    // console.warn(ingredients);
     var instructions = this.props.recipe.get('instructions');
-    console.log(instructions);
+    // console.log(instructions);
 
     return(
       <div className="col-md-5 col-md-offset-2 calculator">
