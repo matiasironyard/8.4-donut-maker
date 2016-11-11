@@ -1,6 +1,9 @@
 // console.log('hello add form');
 var React = require('react');
 var Backbone = require('backbone');
+var ReactQuill = require('react-quill');
+
+// var trumbowyg = require('react-trumbowyg');
 
 var models = require('../models/recipe');
 var Template = require('../templates/templates.jsx');
@@ -31,10 +34,26 @@ var FormIngredientsList = React.createClass({
           <input onChange={this.handleInputChange} type="text" name="amount" value={this.state.amount}
           className="form-control" id="ingredient-amount" placeholder="Amount"/>
         </div>
-        <div className="form-group">
-          <label className="sr-only" htmlFor="ingredient-units">Units</label>
-          <input onChange={this.handleInputChange} type="text" name="units" value={this.state.units} className="form-control" id="ingredient-units" placeholder="Units"/>
-        </div>
+        <select className="form-control" onChange={this.handleInputChange} type="text" name="units" value={this.state.units} className="form-control" id="ingredient-units" placeholder="Units">
+              <option >Tbs</option>
+              <option>Tsp</option>
+              <option>oz.</option>
+              <option>lb.</option>
+              <option>fl.oz.</option>
+              <option>c</option>
+              <option>pt.</option>
+              <option>qt.</option>
+              <option>gal.</option>
+              <option>doz.</option>
+              <option>pkg.</option>
+              <option>sm.</option>
+              <option>med.</option>
+              <option>lg.</option>
+              <option>sq.</option>
+              <option>approx.</option>
+              <option>min.</option>
+        </select>
+
         <div className="form-group">
           <label className="sr-only" htmlFor="ingredient-method">Method</label>
           <input onChange={this.handleInputChange} type="text" name="method" value={this.state.method} className="form-control" id="ingredient-method" placeholder="Method"/>
@@ -85,11 +104,14 @@ handleDelete: function(){
 render: function(){
   var recipe = this.props.recipe;
 
-  var heading = recipe.isNew() ? 'Edd' : 'Edit';
+  var heading = recipe.isNew() ? 'Add' : 'Edit';
   var name = this.props.recipe.get('name');
+
   var ingredientFormset = recipe.get('ingredients').map(function(ingredient){
     return (
-      <div><FormIngredientsList key={ingredient.cid} ingredient={ingredient} /></div>
+      <div><FormIngredientsList key={ingredient.cid} ingredient={ingredient} />
+      </div>
+
     )
   });
 
@@ -99,25 +121,27 @@ render: function(){
       <h4 className="form-subheader">{name}</h4>
       <div className="form-group">
         <label htmlFor="form-heading recipe-name">Recipe Name</label>
-        <input onChange={this.handleInputChange} value={this.state.name} name="name" type="text" className="form-control" id="recipe-name" placeholder="Rum Donut"/>
+        <input autoFocus onChange={this.handleInputChange} value={this.state.name} name="name" type="text" className="form-control" id="recipe-name" placeholder="Rum Donut"/>
       </div>
       <div className="form-group">
         <label htmlFor="form-heading recipe-servings">Makes</label>
         <input  onChange={this.handleServings} value={this.state.servings} name="servings" type="number" className="form-control" id="recipe-servings" placeholder="# of servings"/>
       </div>
-      <div className="form-ingredient-list col-md-12">
+      <div className="form-ingredient-list col-md-10">
         <h4 ingredients-header>Recipe Ingredients</h4>
         <p>Enter Ingredients Below</p>
         <div className="form-inLine">
             {ingredientFormset}
+            <div>
               <span type="button" onClick = {this.props.addIngredient} className = "glyphicon glyphicon-plus"></span>
               <span type="button" onClick = {this.props.removeIngredients} className = "glyphicon glyphicon-minus">-</span>
+            </div>
+        </div>
+        <div className="col-md-12">
+              <textarea onChange={this.handleInputChange} value={this.state.instructions} name="instructions" className="form-control instructions" id="recipe-instructions"  placeholder="Instructions"></textarea>
         </div>
       </div>
 
-      <div className="form-group col-md-12">
-        <textarea onChange={this.handleInputChange} value={this.state.instructions} name="instructions" className="form-control" id="recipe-instructions" rows="5" placeholder="Instructions"></textarea>
-     </div>
      <div className="form-buttons col-md-12">
        <button type="submit" className="btn btn-success">Save Recipe</button>
       </div>
@@ -130,7 +154,7 @@ render: function(){
 var AddEditRecipeContainer = React.createClass({
   getInitialState: function(){
     return{
-      recipe: new models.Recipe()
+      recipe: new models.Recipe(),
     };
   },
 

@@ -6,7 +6,8 @@ var Template = require('../templates/templates.jsx');
 var AdjustRecipeForm = React.createClass({
   getInitialState: function(){
     return {
-      servings: this.props.recipe.get('servings')
+      servings: this.props.recipe.get('servings'),
+      instructions: this.props.recipe.get('instructions'),
     };
 },
 
@@ -44,24 +45,38 @@ handleSubmit: function(e){
 var IngredientsList = React.createClass({
   render: function(){
     var factor = this.props.factor;
+    var instructions = this.props.instructions;
     var ingredientListItems =
     this.props.ingredients.map(function(ingredient){
       var newAmount = ingredient.get('amount') * factor;
       var amount = parseInt(newAmount) === newAmount ? newAmount : newAmount.toFixed(2);
       return (
-            <li key={ingredient.cid} className="ingredients-li">
-              <span className="glyphicon glyphicon-menu-right"/>
-              <span className="ingredient-details" >Amount: {amount}</span>
-              <span className="ingredient-details">Units: {ingredient.get('units')}</span>
-              <span className="ingredient-details">Ingredient: {ingredient.get('name')}</span>
-            </li>
+            <tr key={ingredient.cid} className="ingredients-li">
+              <td className="ingredient-details" >{amount}</td>
+              <td className="ingredient-details">{ingredient.get('units')}</td>
+              <td classNae="ingredient-details">{ingredient.get('method')}</td>
+              <td className="ingredient-details">{ingredient.get('name')}</td>
+            </tr>
       );
     });
     return (
       <div className="ingredients-view">
-        <ul className="ingredients-ul">
-          {ingredientListItems}
-        </ul>
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Amount</th>
+              <th>Units</th>
+              <th>Method</th>
+              <th>Ingredient</th>
+            </tr>
+          </thead>
+          <tbody>
+              {ingredientListItems}
+          </tbody>
+        </table>
+        <div className="instructions">
+          <p>{instructions}</p>
+        </div>
       </div>
     );
   }
@@ -89,10 +104,13 @@ var AdjustRecipeContainer = React.createClass({
   render: function(){
     var ingredients = this.props.recipe.get('ingredients');
     console.warn(ingredients);
+    var instructions = this.props.recipe.get('instructions');
+    console.log(instructions);
+
     return(
-      <div className="col-md-8 col-md-offset-2 calculator">
+      <div className="col-md-5 col-md-offset-2 calculator">
           <AdjustRecipeForm recipe={this.props.recipe} adjustServings={this.adjustServings} servings={this.props.recipe.get('servings')}/>
-          <IngredientsList factor={this.state.factor} ingredients={ingredients} />
+          <IngredientsList factor={this.state.factor} ingredients={ingredients} instructions={instructions}/>
       </div>
     );
   }
