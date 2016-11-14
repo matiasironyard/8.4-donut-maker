@@ -84,25 +84,35 @@ img {
   display: inline-grid;
   padding-top: 30px;
   padding-bottom: 5px;
-  .edit-recipe-header{
-    font-family: 'Poppins', sans-serif;
-  }
 }
 
 .calculator{
-  background-color: #F9E79F;
-  border-radius: 10px;
-  padding-top: 20px;
+  background-color: #FEF9E7;
+  border-radius: 5px;
   padding-bottom: 20px;
   font-family: 'Poppins', sans-serif;
+  margin-top: 30px;
   label{
     padding-bottom: 15px;
     padding-right: 10px;
   }
-  .glyphicon-pencil{
-    font-size: 25px;
-    float: right;
+  .calculator-header{
+    padding-top: 20px;
+    padding-bottom: 15px;
+    .edit-recipe-header{
+      display: inline-block;
+      font-family: 'Lobster', cursive;
+      font-size: 50px;
+      text-align: center;
+    }
+    .glyphicon-pencil{
+      display: inline-block;
+      padding-left: 20px;
+      font-size: 15px;
+    }
   }
+.ingredients-view{
+  padding-top: 20px;
   .ingredients-ul{
     list-style-type: none;
     .ingredients-li{
@@ -128,6 +138,8 @@ img {
       column-count: 2;
     }
   }
+}
+
 }
 
 .recipe-form{

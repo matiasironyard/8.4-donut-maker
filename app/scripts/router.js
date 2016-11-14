@@ -4,6 +4,7 @@ var ReactDOM = require('react-dom');
 
 //bring in components
 var setupParse= require('./parseUtilities').setupParse;
+var User = require('./models/users.js').User;
 var AdjustRecipeContainer = require('./components/AdjustRecipe.jsx').AdjustRecipeContainer;
 var AllRecipesContainer = require('./components/allRecipes.jsx').AllRecipesContainer;
 var SingleRecipeContainer = require('./components/singleRecipeView.jsx').SingleRecipeContainer;
@@ -22,6 +23,10 @@ var AppRouter = Backbone.Router.extend({
   initialize: function(){
     setupParse('matiasrecipeserver', 'recipe');
   },
+
+  // initialize: function(){
+  //   User.auth('matiasrecipeserver', 'recipe');
+  // },
 
   index: function(){
     ReactDOM.render(

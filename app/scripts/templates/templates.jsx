@@ -11,7 +11,7 @@ function Template(props){
             <div className="col-md-11-fluid nav-bar-col">
               <a href="#"><div className="facebook"></div></a>
                 <ul className="nav nav-tabs">
-                  <li><span className="nav-name">#,</span><span className="nav-message"> Welcome!</span></li>
+                  <li><span className="nav-name">{localStorage.getItem('username')},</span><span className="nav-message"> Welcome!  </span></li>
                   <li role="presentation" className="active"><a  href="">Recipes Home</a></li>
                   <li role="presentation"> <a href="#recipes/add/">Add Recipe</a></li>
                   <li role="presentation"><a href="#recipes/">View Recipes</a></li>
