@@ -18,7 +18,6 @@ var Fraction = require('fractional').Fraction;
 var AdjustRecipeForm = React.createClass({
   getInitialState: function(nextProps){
     return {
-      servings: '',
       instructions: this.props.recipe.get('instructions'),
     };
 },

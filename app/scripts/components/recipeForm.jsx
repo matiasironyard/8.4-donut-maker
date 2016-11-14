@@ -40,7 +40,7 @@ var FormIngredientsList = React.createClass({
               <option>Tsp</option>
               <option>oz.</option>
               <option>lb.</option>
-              <option>fl.oz.</option>
+              <option>fl oz.</option>
               <option>c</option>
               <option>pt.</option>
               <option>qt.</option>

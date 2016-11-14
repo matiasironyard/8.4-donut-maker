@@ -25,6 +25,11 @@ var AppRouter = Backbone.Router.extend({
   },
 
   // initialize: function(){
+  //   var user = User.current()
+  //   console.log(user);
+  //   if (user){
+  //     user.auth();
+  //   };
   //   User.auth('matiasrecipeserver', 'recipe');
   // },
 
