@@ -20,7 +20,6 @@ var Fraction = require('fractional').Fraction;
 var AdjustRecipeForm = React.createClass({displayName: "AdjustRecipeForm",
   getInitialState: function(nextProps){
     return {
-      servings: '',
       instructions: this.props.recipe.get('instructions'),
     };
 },
@@ -203,7 +202,6 @@ var Fraction = require('fractional').Fraction;
 var AdjustRecipeForm = React.createClass({displayName: "AdjustRecipeForm",
   getInitialState: function(nextProps){
     return {
-      servings: '',
       instructions: this.props.recipe.get('instructions'),
     };
 },
@@ -658,7 +656,7 @@ var FormIngredientsList = React.createClass({displayName: "FormIngredientsList",
               React.createElement("option", null, "Tsp"), 
               React.createElement("option", null, "oz."), 
               React.createElement("option", null, "lb."), 
-              React.createElement("option", null, "fl.oz."), 
+              React.createElement("option", null, "fl oz."), 
               React.createElement("option", null, "c"), 
               React.createElement("option", null, "pt."), 
               React.createElement("option", null, "qt."), 
@@ -1146,6 +1144,11 @@ var AppRouter = Backbone.Router.extend({
   },
 
   // initialize: function(){
+  //   var user = User.current()
+  //   console.log(user);
+  //   if (user){
+  //     user.auth();
+  //   };
   //   User.auth('matiasrecipeserver', 'recipe');
   // },
 
